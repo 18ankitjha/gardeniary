@@ -130,20 +130,22 @@ const Slider = () => {
           // height: 55px;
         }
       `}</style>
-      <Script>
+      {/* <Script>
         {`
     const buttons = document.querySelectorAll("[data-slide-direction]");
-
+        if(buttons.length > 0){
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const offset = button.dataset.slideDirection === "next" ? 1 : -1;
         changeSlide(offset);
       });
     });
+  }
     
     const changeSlide = (offset) => {
       const slides = document.querySelector(".slides");
       const activeSlide = slides.querySelector("[data-active-slide]");
+      if (!activeSlide || !slides){return;}
       let newIndex = [...slides.children].indexOf(activeSlide) + offset;
       newIndex =
         newIndex < 0
@@ -163,7 +165,7 @@ const Slider = () => {
     setInterval(changeSlide.bind(null, 1), 6000);
     
   `}
-      </Script>
+      </Script> */}
       {/* <div className="overflow-hidden"></div> */}
       <section className="carousel">
         <button

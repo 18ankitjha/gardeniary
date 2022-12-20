@@ -2,9 +2,8 @@
 // import { Inter } from '@next/font/google'
 // import styles from '../styles/Home.module.css'
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-// import About from '../components/About'
+
+
 import Slider from '../components/Slider'
 import Content from '../components/Content'
 
@@ -19,10 +18,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar></Navbar>
+      
       <Slider></Slider>
       <Content></Content>
-      <Footer></Footer>
+      
     </>
   )
 }

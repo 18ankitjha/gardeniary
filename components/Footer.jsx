@@ -5,12 +5,12 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div >
-      <footer className="text-gray-600 body-font ">
+      <footer className="text-gray-600 body-font border-t-2 border-b-slate-900">
         <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-32 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             {/* <Link href="/"> */}
             <Link href="/" className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900  ">
-              <Image width={200} height={100} src={logo.src} className="max-h-full h-50 rounded-full" alt="" />
+              <Image width={100} height={100} src={logo.src} className="max-h-full h-50 rounded-full" alt="" />
               
             </Link>
            
