@@ -10,7 +10,7 @@ const Seed = () => {
 
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden ">
+                <div className="block  pr-4  rounded overflow-hidden ">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -22,7 +22,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -34,7 +34,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -46,7 +46,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -58,7 +58,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -70,7 +70,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -82,7 +82,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -94,7 +94,7 @@ const Seed = () => {
             </div>
             <div className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
               <Link href={'/product/plant-the-garden'}>
-                <div className="block relative  rounded overflow-hidden">
+                <div className="block  pr-4  rounded overflow-hidden">
                   <img alt="ecommerce" className="block m-auto h-[36vh]  md:m-2" src="https://m.media-amazon.com/images/I/711CC4bzHzL._SX679_.jpg" />
                 </div>
                 <div className="mt-4 text-center md:text-left">

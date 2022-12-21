@@ -44,7 +44,7 @@ const Slider = () => {
           background-color: var(--unhover-background-color);
           border: 2px solid var(--unhover-border-color);
           color: var(--unhover-text-color);
-          z-index: 10;
+          z-index: 1;
           cursor: pointer;
         
         }
@@ -145,7 +145,7 @@ const Slider = () => {
     const changeSlide = (offset) => {
       const slides = document.querySelector(".slides");
       const activeSlide = slides.querySelector("[data-active-slide]");
-      if (!activeSlide || !slides){return;}
+      
       let newIndex = [...slides.children].indexOf(activeSlide) + offset;
       newIndex =
         newIndex < 0
@@ -175,7 +175,7 @@ const Slider = () => {
           <img src={prev.src} className="arrows" />
         </button>
         <button
-          className="slider-button slider-button-next"
+          className="slider-button slider-button-next "
           data-slide-direction="next"
         >
            <img src={next.src} className="arrows" />
