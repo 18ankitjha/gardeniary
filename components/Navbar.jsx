@@ -25,7 +25,7 @@ const Navbar = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
   };
   const ref = useRef();
   return (
-    <div className="flex flex-col md:flex-row md:justify-start  justify-center items-center  text-gray-600 bg-white mb-1 shadow-xl sticky top-0 z-100">
+    <div className="flex flex-col md:flex-row md:justify-start  justify-center items-center  text-gray-600 bg-white mb-1 shadow-xl ">
       <div className="logo mx-5">
         <Link href={"/"}>
           <Image
@@ -61,7 +61,7 @@ const Navbar = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
       </div>
       <div
         ref={ref}
-        className="h-[100vh] w-72 sideCart absolute top-0 right-0 bg-green-100 py-10 px-8 z-10 transform transition-transform translate-x-full"
+      className={`h-full w-72 sideCart absolute top-0 right-0 bg-green-100 py-10 px-8 z-10 transform transition-transform ${Object.keys(cart).length!=0? 'translate-x-0':'translate-x-full'}`}
       >
         <h2 className="font-bold text-xl text-center">Shopping cart</h2>
         <span
@@ -87,12 +87,17 @@ const Navbar = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
               </li>
             );
           })}
-        </ol>
+
+        </ol>{
+          Object.keys(cart).length!=0 && 
+          <div className="font-bold my-6">SubTotal:{subTotal===0 ? "":subTotal}</div>}
         <div className="flex ">
+          <Link href={'/Checkout'}>
           <button className="flex mr-2 text-gray-100 bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded text-sm">
             <BsFillBagCheckFill className="m-1" />
             Checkout
           </button>
+          </Link>
           <button
             onClick={clearCart}
             className="flex mr-2 text-gray-100 bg-green-500 border-0 py-2 px-2 focus:outline-none hover:bg-green-700 rounded text-sm"
