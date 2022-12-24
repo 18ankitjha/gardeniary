@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router'
 import mongoose from 'mongoose'
 import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import Product from '../../models/Product'
-const Post = ({Buynow, addtoCart, product, variants }) => {
+const Post = ({ Buynow, addtoCart, product, variants }) => {
   console.log(product, variants)
   const router = useRouter()
   const { slug } = router.query
@@ -14,12 +17,32 @@ const Post = ({Buynow, addtoCart, product, variants }) => {
     let pins = await fetch('http://localhost:3000/api/pincode')
     let pinjson = await pins.json()
     // console.log(pinjson)
-
-
+    
+    
     if (pinjson.includes(parseInt(pin))) {
       console.log('service available')
       setservice(true)
+      toast.success('Your area is serviceble', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
+      toast.error('Sorry ! We are continuosly growing to service in your area', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       setservice(false)
     }
 
@@ -34,9 +57,10 @@ const Post = ({Buynow, addtoCart, product, variants }) => {
     let url = `http://localhost:3000/product/${variants[newcolor][newsize]['slug']}`
     window.location = url
   }
-  
+
   return <>
     <section className="text-gray-600 body-font overflow-hidden">
+      <ToastContainer  />
       <div className="container px-5 py-16 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img alt="ecommerce" className="lg:w-1/2 px-24 w-full lg:h-auto  object-cover object-top rounded" src={product.img} />
@@ -143,7 +167,7 @@ export async function getServerSideProps(context) {
 
   let product = await Product.findOne({ slug: context.query.slug });
   // console.log(product);
-  let variants = await Product.find({ title: product.title })
+  let variants = await Product.find({ title: product.title,category:product.category })
   // console.log(variants);
   let colorSizeSlug = {}//{red:{xl:{slug:"gardeniaey"}}}
   for (let item of variants) {
