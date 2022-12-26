@@ -3,24 +3,41 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import LoadingBar from 'react-top-loading-bar'
+import { useRef } from 'react'
+
 export default function App({ Component, pageProps }) {
   const [cart, setCart] = useState({})
   const [subTotal, setSubTotal] = useState(0)
+  const [user, setUser] = useState({ value: null })
+  const [key, setKey] = useState((0))
+  const [progress, setProgress] = useState(0)
   const router = useRouter()
   useEffect(() => {
     // console.log("This is use effect")
+    router.events.on('routeChangeStart', () => {
+      setProgress(30)
+    })
+    router.events.on('routeChangeComplete', () => {
+      setProgress(100)
+    })
     try {
 
 
       setCart(JSON.parse(localStorage.getItem('cart')))
-      
+
       saveCart(JSON.parse(localStorage.getItem('cart')))
 
     } catch (error) {
       console.log(error)
       localStorage.clear()
     }
-  }, [])
+    const token = localStorage.getItem('token')
+    if (token) {
+      setUser({ value: token })
+      setKey(Math.random())
+    }
+  }, [router.query])
 
 
   const saveCart = (cart) => {
@@ -36,20 +53,25 @@ export default function App({ Component, pageProps }) {
     localStorage.removeItem('cart')
     setCart({})
     saveCart({})
-    
+
   }
   const Buynow = (itemcode, qty, price, name, size, variant) => {
     // saveCart({});
-    let newCart = {itemcode:{  qty:1, price, name, size, variant }}
+    let newCart = { itemcode: { qty: 1, price, name, size, variant } }
     setCart(newCart)
     saveCart(newCart)
     router.push('/Checkout')
-    
+
   }
-  
+  const logout = () => {
+    localStorage.removeItem('token')
+    setUser({ value: null })
+    setKey(Math.random())
+  }
+
   const removeFromCart = (itemcode, qty, price, name, size, variant) => {
 
-    let newCart =JSON.parse(JSON.stringify(cart))
+    let newCart = JSON.parse(JSON.stringify(cart))
     console.log(newCart)
     if (itemcode in newCart) {
       newCart[itemcode].qty -= qty
@@ -71,9 +93,15 @@ export default function App({ Component, pageProps }) {
     setCart(newCart)
     saveCart(newCart)
   }
+
+
   return <>
-    <Navbar cart={cart} addtoCart={addtoCart}  Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal}  />
-    <Component cart={cart} addtoCart={addtoCart}  Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart}  subTotal={subTotal} {...pageProps} />
+    <LoadingBar color="#1CD207"
+      progress={progress}
+      waitingTime={500}
+      onLoaderFinished={() => setProgress(0)} />
+    <Navbar user={user} logout={logout} key={key} cart={cart} addtoCart={addtoCart} Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
+    <Component cart={cart} addtoCart={addtoCart} Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
     <Footer />
   </>
 }

@@ -1,11 +1,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
-
+import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-  
+import { useEffect } from 'react';
 const Signup = () => {
+  const router = useRouter()
+  // const [name, setName] = useState("")
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      router.push("/")
+    }
+  }, [])
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -37,6 +44,7 @@ const Signup = () => {
     setName("")
     setEmail("")
     setPassword("")
+    
     toast.success('Your account has been created', {
       position: "top-center",
       autoClose: 3000,
