@@ -7,7 +7,7 @@ const handler = async (req, res) => {
         let u=new User({
             name:req.body.name,
             email:req.body.email,
-            password:CryptoJS.AES.encrypt(req.body.password, 'secret key 123').toString(),
+            password:CryptoJS.AES.encrypt(req.body.password, process.env.CRYPTO_KEY).toString(),
         })
         await u.save()
         res.status(200).json({ success: "Success" })

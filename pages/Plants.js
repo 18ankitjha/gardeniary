@@ -15,7 +15,7 @@ const Plants = ({ products }) => {
                 <div key={products[item]._id} className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-5">
                   <Link href={`/product/${products[item].slug}`}>
                     <div className="block  pr-4  rounded overflow-hidden ">
-                      <img alt="ecommerce" className="block m-auto  h-[36vh]  md:m-2" src={products[item].img} />
+                            <img alt="ecommerce" className="block m-auto  h-[36vh]  md:m-2" src={products[item].img} />
                     </div>
                     <div className="mt-4 text-center md:text-left">
                       <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 ">{products[item].category}</h3>

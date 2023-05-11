@@ -7,18 +7,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Product from '../../models/Product'
 const Post = ({ Buynow, addtoCart, product, variants }) => {
-  console.log(product, variants)
+  // console.log(product, variants)
   const router = useRouter()
   const { slug } = router.query
-  const [pin, setPin] = useState()
-  const [service, setservice] = useState()
+  const [pin, setPin] = useState("")
+  const [service, setservice] = useState("")
   // console.log(product,variants)
   const checkServicebility = async () => {
-    let pins = await fetch('http://localhost:3000/api/pincode')
+    let pins = await fetch( `${process.env.NEXT_PUBLIC_HOST}/api/pincode`)
     let pinjson = await pins.json()
     // console.log(pinjson)
     
-    
+    console.log(pinjson.includes(parseInt(pin)))
     if (pinjson.includes(parseInt(pin))) {
       console.log('service available')
       setservice(true)
@@ -33,6 +33,7 @@ const Post = ({ Buynow, addtoCart, product, variants }) => {
         theme: "light",
       });
     } else {
+      setservice(false)
       toast.error('Sorry ! We are continuosly growing to service in your area', {
         position: "top-right",
         autoClose: 2000,
@@ -43,8 +44,8 @@ const Post = ({ Buynow, addtoCart, product, variants }) => {
         progress: undefined,
         theme: "light",
       });
-      setservice(false)
     }
+    console.log(service)
 
   }
   const onChangePin = (e) => {
@@ -54,7 +55,7 @@ const Post = ({ Buynow, addtoCart, product, variants }) => {
   const [color, setcolor] = useState(product.color)
   const [size, setsize] = useState(product.size)
   const refreshVariant = (newsize, newcolor) => {
-    let url = `http://localhost:3000/product/${variants[newcolor][newsize]['slug']}`
+    let url = `${process.env.NEXT_PUBLIC_HOST}/product/${variants[newcolor][newsize]['slug']}`
     window.location = url
   }
 
@@ -145,11 +146,11 @@ const Post = ({ Buynow, addtoCart, product, variants }) => {
               <button onClick={checkServicebility} className="flex ml-4 text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">Check</button>
             </div>
             {
-              (!service && service != null) && <div className="text-red-700 text-sm mt-3 mx-1">
+              (service===false && service != "") && <div className="text-red-700 text-sm mt-3 mx-1">
                 We don't deliver to this pincode yet
               </div>}
             {
-              (service && service != null) && <div className="text-green-700 text-sm mt-3 mx-1">
+              (service===true &&  service!="") && <div className="text-green-700 text-sm mt-3 mx-1">
                 This is servicable
               </div>}
           </div>

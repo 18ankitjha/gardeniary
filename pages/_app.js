@@ -67,6 +67,7 @@ export default function App({ Component, pageProps }) {
     localStorage.removeItem('token')
     setUser({ value: null })
     setKey(Math.random())
+    router.push('/')
   }
 
   const removeFromCart = (itemcode, qty, price, name, size, variant) => {
@@ -100,7 +101,7 @@ export default function App({ Component, pageProps }) {
       progress={progress}
       waitingTime={500}
       onLoaderFinished={() => setProgress(0)} />
-    <Navbar user={user} logout={logout} key={key} cart={cart} addtoCart={addtoCart} Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />
+    { <Navbar user={user} logout={logout} key={key} cart={cart} addtoCart={addtoCart} Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} />}
     <Component cart={cart} addtoCart={addtoCart} Buynow={Buynow} removeFromCart={removeFromCart} clearCart={clearCart} subTotal={subTotal} {...pageProps} />
     <Footer />
   </>
