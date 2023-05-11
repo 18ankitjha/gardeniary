@@ -18,9 +18,9 @@ const Checkout = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
     <div className='container m-auto'>
       <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
       </Head>
-      <Script type="application/javascript" src={`${process.env.PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.PAYTM_MKID}.js`} onload="onScriptLoad();" crossorigin="anonymous">
+      {/* <Script type="application/javascript" src={`${process.env.PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.PAYTM_MKID}.js`} onload="onScriptLoad();" crossorigin="anonymous">
         
-      </Script>
+      </Script> */}
       <h1 className='font-bold  text-3xl my-8 text-center'>Checkout</h1>
       <h2 className='px-16 ml-2 font-semibold text-xl my-4'> 1.Delivery Details</h2>
       <div className="mx-auto flex px-16 mt-10 flex-col md:flex-row
