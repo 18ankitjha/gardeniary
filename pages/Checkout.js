@@ -4,19 +4,19 @@ import {
   AiFillPlusCircle,
   AiFillMinusCircle,
 } from "react-icons/ai";
-import {MdOutlinePayment} from "react-icons/md";
+import { MdOutlinePayment } from "react-icons/md";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import Link from "next/link";
 import Head from 'next/head';
-import Script from 'next/script';
+
+
 
 const Checkout = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
-  const intiatepayment=()=>{
-      ipcongi
-  }
+
+
   return (
     <div className='container m-auto'>
-      <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+      <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
       </Head>
       {/* <Script type="application/javascript" src={`${process.env.PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.PAYTM_MKID}.js`} onload="onScriptLoad();" crossorigin="anonymous">
         
@@ -96,8 +96,8 @@ const Checkout = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
           className="h-full  sideCart my-4 p-8 z-10 bg-green-300"
         >
           <ol className="list-decimal font-semibold">
-            {Object.keys(cart).length === 0 && <div className="my-4 ">No items in the cart!!</div>}
-            {Object.keys(cart).map((k) => {
+            {cart && Object.keys(cart).length === 0 && <div className="my-4 ">No items in the cart!!</div>}
+            {cart && Object.keys(cart).map((k) => {
               return (
                 <li key={k}>
                   <div className="item flex my-3">
@@ -119,11 +119,11 @@ const Checkout = ({ cart, addtoCart, removeFromCart, clearCart, subTotal }) => {
         </div>
         {/* Payment */}
         <div className="my-3">
-        <Link href={'/Checkout'}>
-          <button className="flex  text-gray-100 bg-blue-500 border-0 py-2 px-2 focus:outline-none hover:bg-blue-700 rounded text-sm">
-            <MdOutlinePayment className="m-1" />
-            Pay ₹{subTotal}
-          </button>
+          <Link href={'/Checkout'}>
+            <button className="flex  text-gray-100 bg-blue-500 border-0 py-2 px-2 focus:outline-none hover:bg-blue-700 rounded text-sm">
+              <MdOutlinePayment className="m-1" />
+              Pay ₹{subTotal}
+            </button>
           </Link>
         </div>
       </div>

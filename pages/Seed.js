@@ -2,8 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import mongoose from "mongoose";
 import Product from "../models/Product"
+import { useEffect } from 'react';
+import router from 'next/router'
 const Seed = ({ products }) => {
   // console.log(products);
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/Login`)
+    }
+  }, [])
   return (
     <div>
       <section className="text-gray-600 body-font">
